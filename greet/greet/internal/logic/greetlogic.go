@@ -2,10 +2,9 @@ package logic
 
 import (
 	"context"
-	"fmt"
 
-	"go-zero-single-demo/greet/internal/svc"
-	"go-zero-single-demo/greet/internal/types"
+	"go-zero-single-demo/greet/greet/internal/svc"
+	"go-zero-single-demo/greet/greet/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -27,9 +26,5 @@ func NewGreetLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GreetLogic 
 func (l *GreetLogic) Greet(req *types.Request) (resp *types.Response, err error) {
 	// todo: add your logic here and delete this line
 
-	fmt.Println("===>>>req", req.Name)
-
-	return &types.Response{
-		Message: "Hello go-zero",
-	}, nil
+	return
 }

@@ -1,12 +1,40 @@
 type Request {
-	Name string `path:"name,options=you|me"`
+	Name string `json:"name"`
 }
 
 type Response {
 	Message string `json:"message"`
 }
 
+// 获取用户信息
+type UserInfoRequest {
+	Id string `path:"id"`
+}
+
+type UserInfoResponse {
+	Id             string `json:"id"`
+	Name           string `json:"name"`
+	Age            int    `json:"age"`
+	Address        string `json:"address"`
+	AddressInfo    string `json:"nnn"`
+	AaaaddressInfo string `json:"nnnddd"`
+}
+
+// 新增用户
+type UserRegisterRequest {
+	Id      string `form:"id"`
+	Name    string `form:"name"`
+	Age     int    `form:"age"`
+	Address string `form:"address"`
+}
+
 service greet-api {
 	@handler GreetHandler
-	get /from/:name(Request) returns (Response)
+	get /from(Request) returns (Response)
+	
+	@handler GreetUserInfoHandler
+	get /user/:id(UserInfoRequest) returns (UserInfoResponse)
+	
+	@handler GreetUserRegisterHandler
+	post /user/save(UserRegisterRequest) returns (UserRegisterRequest)
 }

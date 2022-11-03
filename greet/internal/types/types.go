@@ -2,9 +2,29 @@
 package types
 
 type Request struct {
-	Name string `path:"name,options=you|me"`
+	Name string `json:"name"`
 }
 
 type Response struct {
 	Message string `json:"message"`
+}
+
+type UserInfoRequest struct {
+	Id string `path:"id"`
+}
+
+type UserInfoResponse struct {
+	Id             string `json:"id"`
+	Name           string `json:"name"`
+	Age            int    `json:"age"`
+	Address        string `json:"address"`
+	AddressInfo    string `json:"nnn"`
+	AaaaddressInfo string `json:"nnnddd"`
+}
+
+type UserRegisterRequest struct {
+	Id      string `form:"id"`
+	Name    string `form:"name"`
+	Age     int    `form:"age"`
+	Address string `form:"address"`
 }
