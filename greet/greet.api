@@ -30,6 +30,8 @@ type UserRegisterRequest {
 
 @server(
 	group: user
+	prefix: greet/v1
+//    middleware: Example // 中间件使用
 )
 service greet-api {
 	@doc "form信息输入"

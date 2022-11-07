@@ -29,5 +29,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: user.GreetUserRegisterHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/greet/v1"),
 	)
 }
