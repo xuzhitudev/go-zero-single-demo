@@ -1,4 +1,4 @@
-package logic
+package user
 
 import (
 	"context"
@@ -25,6 +25,7 @@ func NewGreetUserRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) 
 
 func (l *GreetUserRegisterLogic) GreetUserRegister(req *types.UserRegisterRequest) (resp *types.UserRegisterRequest, err error) {
 	// todo: add your logic here and delete this line
+
 	return &types.UserRegisterRequest{
 		Id:      "ww",
 		Name:    "许志图",

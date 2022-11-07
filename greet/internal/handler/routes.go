@@ -4,6 +4,7 @@ package handler
 import (
 	"net/http"
 
+	user "go-zero-single-demo/greet/internal/handler/user"
 	"go-zero-single-demo/greet/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -15,17 +16,17 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			{
 				Method:  http.MethodGet,
 				Path:    "/from",
-				Handler: GreetHandler(serverCtx),
+				Handler: user.GreetHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
 				Path:    "/user/:id",
-				Handler: GreetUserInfoHandler(serverCtx),
+				Handler: user.GreetUserInfoHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/user/save",
-				Handler: GreetUserRegisterHandler(serverCtx),
+				Handler: user.GreetUserRegisterHandler(serverCtx),
 			},
 		},
 	)

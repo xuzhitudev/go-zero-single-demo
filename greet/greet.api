@@ -28,16 +28,19 @@ type UserRegisterRequest {
 	Address string `form:"address"`
 }
 
+@server(
+	group: user
+)
 service greet-api {
 	@doc "form信息输入"
 	@handler GreetHandler
-	get /from(Request) returns (Response)
-
+	get /from (Request) returns (Response)
+	
 	@doc "根据id获取用户信息"
 	@handler GreetUserInfoHandler
-	get /user/:id(UserInfoRequest) returns (UserInfoResponse)
-
+	get /user/:id (UserInfoRequest) returns (UserInfoResponse)
+	
 	@doc "用户信息注册"
 	@handler GreetUserRegisterHandler
-	post /user/save(UserRegisterRequest) returns (UserRegisterRequest)
+	post /user/save (UserRegisterRequest) returns (UserRegisterRequest)
 }
