@@ -2,11 +2,11 @@ package user
 
 import (
 	"context"
-
+	"github.com/zeromicro/go-zero/core/logx"
 	"go-zero-single-demo/greet/internal/svc"
 	"go-zero-single-demo/greet/internal/types"
-
-	"github.com/zeromicro/go-zero/core/logx"
+	"go-zero-single-demo/greet/model"
+	"google.golang.org/grpc/status"
 )
 
 type GreetUserRegisterLogic struct {
@@ -24,12 +24,25 @@ func NewGreetUserRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) 
 }
 
 func (l *GreetUserRegisterLogic) GreetUserRegister(req *types.UserRegisterRequest) (resp *types.UserRegisterRequest, err error) {
-	// todo: add your logic here and delete this line
+	tUser := model.TUser{
+		UserId:   req.Id,
+		NickName: req.Name,
+	}
+
+	res, err := l.svcCtx.TUserModel.Insert(l.ctx, &tUser)
+	if err != nil {
+		return nil, status.Error(500, err.Error())
+	}
+
+	tUser.Id, err = res.LastInsertId()
+	if err != nil {
+		return nil, status.Error(500, err.Error())
+	}
 
 	return &types.UserRegisterRequest{
-		Id:      "ww",
-		Name:    "许志图",
+		Id:      req.Id,
+		Name:    req.Name,
 		Age:     30,
-		Address: "济南市高新区铭盛大厦",
+		Address: "济南市三盛国际公园",
 	}, nil
 }

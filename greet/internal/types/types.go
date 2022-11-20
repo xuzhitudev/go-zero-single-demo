@@ -10,11 +10,11 @@ type Response struct {
 }
 
 type UserInfoRequest struct {
-	Id string `path:"id"`
+	Id int64 `path:"id"`
 }
 
 type UserInfoResponse struct {
-	Id             string `json:"id"`
+	Id             int64  `json:"id"`
 	Name           string `json:"name"`
 	Age            int    `json:"age"`
 	Address        string `json:"address"`
@@ -23,7 +23,7 @@ type UserInfoResponse struct {
 }
 
 type UserRegisterRequest struct {
-	Id      string `form:"id"`
+	Id      int64  `form:"id"`
 	Name    string `form:"name"`
 	Age     int    `form:"age"`
 	Address string `form:"address"`

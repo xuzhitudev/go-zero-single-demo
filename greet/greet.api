@@ -8,11 +8,11 @@ type Response {
 
 // 获取用户信息
 type UserInfoRequest {
-	Id string `path:"id"`
+	Id int64 `path:"id"`
 }
 
 type UserInfoResponse {
-	Id             string `json:"id"`
+	Id             int64  `json:"id"`
 	Name           string `json:"name"`
 	Age            int    `json:"age"`
 	Address        string `json:"address"`
@@ -22,7 +22,7 @@ type UserInfoResponse {
 
 // 新增用户
 type UserRegisterRequest {
-	Id      string `form:"id"`
+	Id      int64  `form:"id"`
 	Name    string `form:"name"`
 	Age     int    `form:"age"`
 	Address string `form:"address"`
@@ -31,7 +31,7 @@ type UserRegisterRequest {
 @server(
 	group: user
 	prefix: greet/v1
-//    middleware: Example // 中间件使用
+	//    middleware: Example // 中间件使用
 )
 service greet-api {
 	@doc "form信息输入"
@@ -45,4 +45,5 @@ service greet-api {
 	@doc "用户信息注册"
 	@handler GreetUserRegisterHandler
 	post /user/save (UserRegisterRequest) returns (UserRegisterRequest)
+	
 }
